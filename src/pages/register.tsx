@@ -1,8 +1,28 @@
-import RegisterForm from "@/components/Auth/Register"
-import Wrapper from "@/components/Auth/Wrapper"
 import Head from "next/head"
+import RegisterForm from "@/components/Auth/Register"
+import MultiStepForm from "@/components/Auth/Register/MultiStepForm"
+import Wrapper from "@/components/Auth/Wrapper"
+import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 
-const Register = () => {
+export const getServerSideProps: GetServerSideProps<{
+  deviceType: "mobile" | "desktop"
+}> = async ({ req }) => {
+  const userAgent = req.headers["user-agent"]
+
+  const deviceType = userAgent.toLowerCase().includes("mobi")
+    ? "mobile"
+    : "desktop"
+
+  return {
+    props: {
+      deviceType
+    }
+  }
+}
+
+const Register: React.FC<
+  InferGetServerSidePropsType<typeof getServerSideProps>
+> = ({ deviceType }) => {
   return (
     <>
       <Head>
@@ -10,7 +30,7 @@ const Register = () => {
       </Head>
 
       <Wrapper path="register">
-        <RegisterForm />
+        {deviceType === "mobile" ? <MultiStepForm /> : <RegisterForm />}
       </Wrapper>
     </>
   )

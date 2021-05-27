@@ -7,53 +7,17 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 import InputAdornment from "@material-ui/core/InputAdornment"
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
-import { initialValues, TValues, validationSchema } from "./config"
-import { useRealmApp } from "@/components/RealmContext"
-import handleAuthenticationError from "@/components/Auth/handle-auth-error"
+import { initialValues, validationSchema } from "./config"
 import dynamic from "next/dynamic"
-import { useRouter } from "next/router"
 import useStyles from "../useStyles"
-import { useMongoDB } from "@/components/MongoDBContext"
+import useRegister from "./useRegister"
 
 const Banner = dynamic(() => import("@/components/Banner"))
 
 const RegisterForm = () => {
   const classes = useStyles()
-  const { replace } = useRouter()
-  const [showPassword, setShowPassword] = useState(false)
-  const [errorAlert, setErrorAlert] = useState("")
-  const [userData, setUserData] = useState({ firstName: "", lastName: "" })
-  const { register, user } = useRealmApp()
-  const { db } = useMongoDB()
-
-  const handleToggle = () => setShowPassword(!showPassword)
-  const handleSubmit = (
-    { email, password, ...rest }: TValues,
-    { setSubmitting, setErrors }: FormikHelpers<TValues>
-  ) => {
-    setUserData(rest)
-    register(email, password)
-      .catch(err => {
-        const { message, key } = handleAuthenticationError(err)
-        console.log(err)
-
-        !key && setErrorAlert(message)
-
-        key === "email"
-          ? setErrors({ email: message })
-          : setErrors({ password: message })
-      })
-      .finally(() => setSubmitting(false))
-  }
-
-  useEffect(() => {
-    db?.collection("users")
-      .insertOne({ userID: user?.id, ...userData })
-      .then(() => {
-        replace("/dashboard")
-      })
-      .catch(err => console.log(err.message))
-  }, [db])
+  const { errorAlert, clearError, handleSubmit, showPassword, handleToggle } =
+    useRegister()
 
   return (
     <>
@@ -146,7 +110,7 @@ const RegisterForm = () => {
         open={Boolean(errorAlert)}
         message={errorAlert}
         severity="error"
-        handleClose={() => setErrorAlert("")}
+        handleClose={clearError}
       />
     </>
   )

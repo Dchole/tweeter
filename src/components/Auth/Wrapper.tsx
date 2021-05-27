@@ -18,6 +18,15 @@ const useStyles = makeStyles(theme =>
         width: "100%",
         padding: theme.spacing(2)
       }
+    },
+    paper: {
+      width: "100%",
+      height: "100vh",
+
+      [theme.breakpoints.up("sm")]: {
+        width: "initial",
+        height: "initial"
+      }
     }
   })
 )
@@ -34,7 +43,7 @@ const Wrapper: React.FC<IWrapperProps> = ({ path, children }) => {
 
   return (
     <Container maxWidth="xs" disableGutters={mobile} className={classes.root}>
-      <Paper>
+      <Paper className={classes.paper}>
         <Typography variant="h4" component="h1" align="center">
           {onLoginPage ? "Sign In" : "Sign Up"}
         </Typography>
