@@ -1,8 +1,8 @@
-import Header from "../Header"
+import { useRouter } from "next/router"
 import { useTheme } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Header from "../Header"
 import BottomNavbar from "../BottomNavbar"
-import { useRouter } from "next/router"
 
 const Layout: React.FC = ({ children }) => {
   const { pathname } = useRouter()
