@@ -51,10 +51,20 @@
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
   integrity sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==
 
+"@fontsource/noto-sans@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/noto-sans/-/noto-sans-4.4.0.tgz#c0289a38201ecbf0f63453201698deef908d76a1"
+  integrity sha512-VK1TwCGzpQXBVsNZlY62AILI/fni53tndYK1qzTLx231bkoB/JdWtI/o62ncsxvcTMmprMHHY/YEp8M6tFgqDg==
+
 "@fontsource/nunito-sans@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@fontsource/nunito-sans/-/nunito-sans-4.4.0.tgz#ab716cf567f6370efd373a579bc585c3235a075d"
   integrity sha512-cHVCsJj0WO2gJGrPQNYoM68uTaVgwwYDZd34oY8E/2ZYQr4brUzMo0EcTXFaoLsZynLIUSQu70QinobwiD6lLQ==
+
+"@fontsource/poppins@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.4.0.tgz#8871af188e382149729bd4ea1a462674c8c1998c"
+  integrity sha512-BxcponyUNYGyuDJZElIWR15Gs+T5oPEBW/SBnIvIaTpXPx7mJWqGnwNB9gWwpnplfWSSz/eVRRx5XmokoKcaDw==
 
 "@fontsource/roboto@^4.4.0":
   version "4.4.0"

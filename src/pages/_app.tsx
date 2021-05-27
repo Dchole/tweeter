@@ -9,6 +9,7 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import theme from "@/lib/theme"
 import RealmApp from "@/components/RealmContext"
 import MongoDB from "@/components/MongoDBContext"
+import Layout from "@/components/Layout"
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -32,7 +33,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <CssBaseline />
         <RealmApp>
           <MongoDB>
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </MongoDB>
         </RealmApp>
       </ThemeProvider>
