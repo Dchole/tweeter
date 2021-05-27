@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
@@ -14,6 +15,13 @@ interface IMenuProps {
 }
 
 const MenuOptions: React.FC<IMenuProps> = ({ open, anchorEl, handleClose }) => {
+  const { replace } = useRouter()
+
+  const logout = () => {
+    replace("/login")
+    handleClose()
+  }
+
   return (
     <Menu open={open} anchorEl={anchorEl} onClose={handleClose}>
       <MenuItem onClick={handleClose}>
@@ -34,7 +42,7 @@ const MenuOptions: React.FC<IMenuProps> = ({ open, anchorEl, handleClose }) => {
         </ListItemIcon>
         <ListItemText>Settings</ListItemText>
       </MenuItem>
-      <MenuItem onClick={handleClose}>
+      <MenuItem onClick={logout}>
         <ListItemIcon>
           <LogoutIcon />
         </ListItemIcon>
