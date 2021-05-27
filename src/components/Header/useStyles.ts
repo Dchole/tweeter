@@ -6,6 +6,17 @@ const useStyles = makeStyles(theme =>
       justifyContent: "space-between",
       alignItems: "center"
     },
+    list: {
+      display: "flex",
+      gap: theme.spacing(2),
+
+      "& .MuiListItem-root": {
+        "& a": {
+          color: theme.palette.text.secondary,
+          textDecoration: "none"
+        }
+      }
+    },
     user: {
       display: "flex",
       alignItems: "center",
